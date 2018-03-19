@@ -4,9 +4,11 @@ import { Routes } from "@angular/router";
 
 import { ItemsComponent } from "./item/items.component";
 import { ItemDetailComponent } from "./item/item-detail.component";
+import { HomePageComponent } from "./home-page/home-page.component";
 
 const routes: Routes = [
-    { path: "", redirectTo: "/items", pathMatch: "full" },
+    { path: "", redirectTo: "/home_page", pathMatch: "full" },
+    { path: "home_page", component: HomePageComponent },
     { path: "items", component: ItemsComponent },
     { path: "item/:id", component: ItemDetailComponent },
 ];
