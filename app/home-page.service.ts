@@ -1,31 +1,19 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import { Observable as RxObservable } from "rxjs/Observable";
 import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
+import { Http } from "@angular/http";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/do";
 @Injectable()
 export class HomePageService {
-  url = 'https://us-central1-midtermselect.cloudfunctions.net/apiUrl'
+  apiUrl = 'https://us-central1-midtermselect.cloudfunctions.net/apiUrl/'
 
   constructor(
-    private http: HttpClient
+    private http: Http
   ) { }
 
-  getData() {
-    let headers = this.createRequestHeader();
-    return this.http.get(this.url+'/data')
-        .map(res =>  res);
-}
-
-  private createRequestHeader() {
-    // set headers here e.g.
-    let headers = new HttpHeaders({
-        // "AuthKey": "my-key",
-        // "AuthToken": "my-token",
-        "Content-Type": "application/json",
-     });
-
-    return headers;
-}
-
+ async getData() {
+    const rs  =  await this.http.get(this.apiUrl + 'data').toPromise();
+    return rs.json();
+  }
 }

@@ -8,27 +8,24 @@ import { HomePageService } from "../home-page.service";
 })
 export class HomePageComponent implements OnInit {
 
-  data:any
+  data: any
 
   constructor(
-    private homePageService : HomePageService
+    private homePageService: HomePageService
   ) { }
 
   ngOnInit() {
     this.extractData()
-   }
+  }
 
-  extractData() {
-    this.homePageService.getData()
-        .subscribe((result) => {
-          this.data = result[0];
-          console.log(this.data)
-        }, (error) => {
-            console.log(error);
-        });
-}
-
-
-
-
+  async extractData() {
+    await this.homePageService.getData()
+      .then((result) => {
+        this.data = result.message;
+        console.log(JSON.stringify(this.data))
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 }

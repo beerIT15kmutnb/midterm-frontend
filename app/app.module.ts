@@ -13,6 +13,8 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
 
 // Uncomment and add to NgModule imports  if you need to use the HTTP wrapper
 import { NativeScriptHttpModule } from "nativescript-angular/http";
+import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
+import { HttpModule } from '@angular/http'
 import { HomePageService } from "./home-page.service";
 
 @NgModule({
@@ -23,7 +25,9 @@ import { HomePageService } from "./home-page.service";
         NativeScriptModule,
         AppRoutingModule,
         NativeScriptHttpModule,
-        NativeScriptFormsModule
+        NativeScriptFormsModule,
+        NativeScriptHttpClientModule,
+        HttpModule
     ],
     declarations: [
         AppComponent,
